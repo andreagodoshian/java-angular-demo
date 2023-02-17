@@ -5,9 +5,7 @@ import com.freyaselberg.expensetracker.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,11 @@ public class ExpenseController {
     public ResponseEntity<List<Expense>> get() {
         List<Expense> allExpenses = expenseService.findAll();
         return new ResponseEntity<List<Expense>>(allExpenses, HttpStatus.OK);
+    }
+
+    @PostMapping("/expenses")
+    public ResponseEntity<Expense> save(@RequestBody Expense expense) {
+        Expense savedExpense = expenseService.save(expense);
+        return new ResponseEntity<Expense>(savedExpense, HttpStatus.OK);
     }
 }

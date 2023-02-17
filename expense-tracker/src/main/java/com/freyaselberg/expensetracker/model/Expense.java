@@ -23,6 +23,7 @@ public class Expense {
     private String description;
 
     // BIG DECIMALS! Do you know what kind of coffee this is?
+    // MORE VERBOSE! GARBAGE COLLECTOR!
     private BigDecimal amount;
 
 }
